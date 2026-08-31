@@ -15,8 +15,7 @@ RUN pnpm build
 FROM node:24.20.0-alpine3.23 AS runtime
 ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 PORT=3000
 WORKDIR /app
-RUN apk upgrade --no-cache libcrypto3=3.5.8-r0 libssl3=3.5.8-r0 && \
-    rm -rf /usr/local/lib/node_modules/npm /usr/local/bin/npm /usr/local/bin/npx
+RUN rm -rf /usr/local/lib/node_modules/npm /usr/local/bin/npm /usr/local/bin/npx
 COPY --from=build --chown=node:node /app/.next/standalone ./
 COPY --from=build --chown=node:node /app/.next/static ./.next/static
 USER node
