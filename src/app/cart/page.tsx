@@ -2,9 +2,10 @@ import Link from "next/link"
 import { getCart } from "@/lib/medusa/cart"
 export const dynamic = "force-dynamic"
 export const metadata = { robots: { index: false, follow: false } }
+type CartItemView = { id: string; title: string; quantity: number }
 export default async function Cart() {
   const cart = await getCart()
-  const items = cart?.items || []
+  const items = (cart?.items || []) as CartItemView[]
   return (
     <section className="section container">
       <h1>Your cart</h1>
