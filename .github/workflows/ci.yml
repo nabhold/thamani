@@ -1,0 +1,31 @@
+name: CI
+on:
+  push: { branches: [main] }
+  pull_request:
+  workflow_dispatch:
+permissions: { contents: read, packages: read }
+concurrency: { group: "ci-${{ github.workflow }}-${{ github.ref }}", cancel-in-progress: true }
+jobs:
+  verify:
+    runs-on: ubuntu-26.04
+    container: { image: "ghcr.io/nabhold/baobab-dev:1.2.6-frontend", options: "--user 0" }
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm format:check
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+        env:
+          MEDUSA_BACKEND_URL: http://localhost:9000
+          NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY: pk_ci_build_only
+          NEXT_PUBLIC_SITE_URL: http://localhost:3000
+          NEXT_PUBLIC_MARKET: za
+          NEXT_PUBLIC_DEFAULT_REGION_ID: reg_ci_build_only
+      - run: test -f contracts.lock.yaml && test -f runtime/requirements.yaml && test -f .nabhold/environment.yaml
+  image:
+    runs-on: ubuntu-26.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: docker build --build-arg MEDUSA_BACKEND_URL=http://localhost:9000 --build-arg NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY=pk_ci --build-arg NEXT_PUBLIC_SITE_URL=http://localhost:3000 --build-arg NEXT_PUBLIC_DEFAULT_REGION_ID=reg_ci --tag thamani:test .
