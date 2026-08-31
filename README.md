@@ -36,3 +36,9 @@ pnpm dev
 Quality gates: `pnpm format:check`, `pnpm lint`, `pnpm typecheck`, `pnpm test`, and `pnpm build`.
 
 See `docs/architecture.md`, `docs/development.md`, `docs/environment.md`, `docs/medusa-integration.md`, `docs/testing.md`, `docs/deployment.md`, and `SECURITY.md`.
+
+## Foundation 4
+
+Codespaces uses `ghcr.io/nabhold/baobab-dev:1.2.6-frontend`. The SHA-pinned
+Foundation gate validates contract compatibility and reproducibility and scans
+source, dependencies, secrets, configuration, and the deployable image.
