@@ -19,8 +19,10 @@ export async function addToCart(formData: FormData) {
     const result = await sdk.store.cart.create({
       region_id: process.env.NEXT_PUBLIC_DEFAULT_REGION_ID || undefined,
     })
-    cartId = result.cart.id
-    jar.set("thamani_cart_id", cartId, {
+    const createdCartId = result.cart.id
+    if (!createdCartId) throw new Error("Baobab Trade returned a cart without an identifier")
+    cartId = createdCartId
+    jar.set("thamani_cart_id", createdCartId, {
       httpOnly: true,
       sameSite: "lax",
       secure: process.env.NODE_ENV === "production",
@@ -28,6 +30,7 @@ export async function addToCart(formData: FormData) {
       maxAge: 60 * 60 * 24 * 30,
     })
   }
+  if (!cartId) throw new Error("Cart identifier could not be resolved")
   await sdk.store.cart.createLineItem(cartId, {
     variant_id: value.variantId,
     quantity: value.quantity,

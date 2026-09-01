@@ -4,26 +4,11 @@ import { listProducts } from "@/lib/medusa/products"
 export const metadata: Metadata = { title: "Shop" }
 export const dynamic = "force-dynamic"
 export default async function Shop() {
-  try {
-    const products = await listProducts()
-    return (
-      <section className="section container">
-        <p className="eyebrow">Catalogue</p>
-        <h1>Shop all</h1>
-        {products.length ? (
-          <div className="product-grid">
-            {products.map((p) => (
-              <ProductCard key={p.id} product={p} />
-            ))}
-          </div>
-        ) : (
-          <p className="notice">
-            No products are currently published to this sales channel and region.
-          </p>
-        )}
-      </section>
-    )
-  } catch {
+  const catalogue = await listProducts()
+    .then((products) => ({ products, unavailable: false }))
+    .catch(() => ({ products: [], unavailable: true }))
+
+  if (catalogue.unavailable) {
     return (
       <section className="section container">
         <h1>Shop</h1>
@@ -33,4 +18,22 @@ export default async function Shop() {
       </section>
     )
   }
+
+  return (
+    <section className="section container">
+      <p className="eyebrow">Catalogue</p>
+      <h1>Shop all</h1>
+      {catalogue.products.length ? (
+        <div className="product-grid">
+          {catalogue.products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      ) : (
+        <p className="notice">
+          No products are currently published to this sales channel and region.
+        </p>
+      )}
+    </section>
+  )
 }
