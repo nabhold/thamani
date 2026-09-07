@@ -2,7 +2,7 @@
 
 See ADR-0002 for the accepted decision this document elaborates.
 
-Thamani owns the supplier onboarding *experience*: registration, the
+Thamani owns the supplier onboarding _experience_: registration, the
 multi-section application, document upload, product proposals, status
 tracking, and messages. It does not own canonical identity (`nabhold/baobab-cp`),
 operational supplier/procurement master data after approval

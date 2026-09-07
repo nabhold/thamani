@@ -45,7 +45,7 @@ must not lose what they already entered.
   (estate-owned, never shared with or copied from any Baobab engine's
   database).
 - **No document storage decision.** Certification and compliance document
-  *uploads* need an object-storage decision this increment does not make.
+  _uploads_ need an object-storage decision this increment does not make.
 
 ## Internal review
 

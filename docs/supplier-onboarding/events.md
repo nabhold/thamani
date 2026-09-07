@@ -23,12 +23,12 @@ deliberately left for itself.
 
 When Thamani does publish, envelope fields are populated as:
 
-| Field | Value |
-|---|---|
-| `source` | `urn:nabhold:service:thamani` |
-| `baobabscope` | `tenant` |
-| `tenantid` | The Control Plane tenant context for the request, once Thamani resolves one (it does not today — no `baobab-cp` integration exists yet). |
-| `dataschema` | The matching `contracts/supplier-onboarding/v1/*.schema.json` `$id`. |
+| Field         | Value                                                                                                                                    |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `source`      | `urn:nabhold:service:thamani`                                                                                                            |
+| `baobabscope` | `tenant`                                                                                                                                 |
+| `tenantid`    | The Control Plane tenant context for the request, once Thamani resolves one (it does not today — no `baobab-cp` integration exists yet). |
+| `dataschema`  | The matching `contracts/supplier-onboarding/v1/*.schema.json` `$id`.                                                                     |
 
 See `contracts/supplier-onboarding/v1/examples/` in `nabhold/shared` for
 complete, schema-validated example payloads.

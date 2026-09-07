@@ -40,13 +40,13 @@ status writes. A disallowed transition throws rather than silently applying.
 
 ## Entities
 
-| Entity | Owner (pre-approval) | Notes |
-|---|---|---|
-| `SupplierOrganisation` | Thamani | `canonicalOrganisationId` reserved, always null in this increment. `applicantIdentityRef` is unimplemented until Thamani has an account system. |
-| `SupplierContact` | Thamani | Name, email, role, phone; multiple per organisation. |
-| `SupplierCapability` | Thamani | `category` is a key into Thamani's own category registry (see below), never a category-specific column. `verificationStatus`: declared / verified / rejected. |
-| `SupplierCertification` | Thamani | Metadata only (type, issuer, reference, dates). Document *files* are an explicit gap — no object storage decision has been made for Thamani yet. |
-| `SupplierStatusEvent` | Thamani | Append-only audit trail: `fromStatus`, `toStatus`, an origin-carrying `actor` (never a bare name), `reason`, `occurredAt`. |
+| Entity                  | Owner (pre-approval) | Notes                                                                                                                                                         |
+| ----------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SupplierOrganisation`  | Thamani              | `canonicalOrganisationId` reserved, always null in this increment. `applicantIdentityRef` is unimplemented until Thamani has an account system.               |
+| `SupplierContact`       | Thamani              | Name, email, role, phone; multiple per organisation.                                                                                                          |
+| `SupplierCapability`    | Thamani              | `category` is a key into Thamani's own category registry (see below), never a category-specific column. `verificationStatus`: declared / verified / rejected. |
+| `SupplierCertification` | Thamani              | Metadata only (type, issuer, reference, dates). Document _files_ are an explicit gap — no object storage decision has been made for Thamani yet.              |
+| `SupplierStatusEvent`   | Thamani              | Append-only audit trail: `fromStatus`, `toStatus`, an origin-carrying `actor` (never a bare name), `reason`, `occurredAt`.                                    |
 
 ## Category registry
 
