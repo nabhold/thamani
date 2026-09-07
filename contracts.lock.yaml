@@ -15,3 +15,4 @@ sources:
 gaps:
   - "Shared has not published a canonical commerce Store API package."
   - "Trade has not published configured payment, shipping, wishlist, review, recommendation, or reorder contracts."
+  - "Shared has not published a release of @nabhold/supplier-domain (packages/supplier-domain) yet; docs/supplier-onboarding/domain-model.md is the interim reference until this lock can pin a real version (see ADR-0002)."

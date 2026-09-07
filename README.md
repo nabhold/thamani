@@ -11,6 +11,7 @@ It sits in an eleven-repository ecosystem: the platform foundation (`baobab-cp`,
 | Commerce            | `nabhold/baobab-trade`   | Consume Medusa v2 Store API; never reproduce or query commerce data directly               |
 | Platform context    | `nabhold/baobab-cp`      | Consume authoritative tenant and entitlement context when its shared contract is published |
 | Canonical contracts | `nabhold/shared`         | Pin identifiers and organisational standards; do not redefine them                         |
+| Supplier onboarding | `nabhold/shared`         | Adopt `@nabhold/supplier-domain` shapes/lifecycle and `contracts/supplier-onboarding/v1` events once published; Thamani owns its own supplier data (see ADR-0002) |
 | ERP                 | `nabhold/baobab-erp`     | No browser or direct integration; Trade mediates business workflows                        |
 | Intelligence        | `nabhold/baobab-pulse`   | Future explicit recommendation/merchandising APIs only                                     |
 | Infrastructure      | `nabhold/infrastructure` | Owns cloud, DNS, networks, deployment and observability infrastructure                     |
