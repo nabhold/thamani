@@ -6,4 +6,4 @@ The B2C information architecture grows by complete vertical slices. Empty routes
 
 ## Current contract findings
 
-The pinned Shared registry correctly identifies `THAMANI-GLOBAL`, but currently labels Thamani B2B and Zuribeans B2C. The approved direction is the reverse. `contracts.lock.yaml` records this correction dependency. Thamani does not alter or duplicate the canonical registry locally.
+The pinned Shared registry correctly identifies `THAMANI-GLOBAL` as B2C and `ZURIBEANS` as B2B, matching the approved estate architecture. Thamani does not alter or duplicate the canonical registry locally. `contracts.lock.yaml` still records one open gap: Shared has not published a canonical commerce Store API package, so Thamani integrates against Baobab Trade's Medusa v2 Store API directly rather than a Baobab-owned contract.
