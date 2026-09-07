@@ -24,7 +24,7 @@ Legal entity is the default tenant boundary but is not synonymous with tenant. T
 
 ## Foundation vertical slice
 
-The current slice provides home, live catalogue, product detail, server-side add-to-cart, cart, search, health, SEO controls and a deliberate checkout gate. Checkout is not fabricated: Baobab Trade must first publish configured shipping, payment and order-completion contracts. Account, wishlist, reviews, recommendations and reorder follow the same evidence-before-UI rule.
+The current slice provides home, live catalogue, product detail, server-side add-to-cart, cart, search, health, SEO controls and a deliberate checkout gate. Checkout is not fabricated: Baobab Trade must first publish configured shipping, payment and order-completion contracts. Customer register/login/retrieve is now proven (see docs/adr/0003-customer-identity-for-supplier-onboarding.md) and available as `src/lib/customer`, but no Account UI consumes it yet. Wishlist, reviews, recommendations and reorder still follow the evidence-before-UI rule.
 
 ## Development
 
