@@ -8,7 +8,7 @@ permissions: { contents: read, packages: read }
 jobs:
   codeql:
     permissions: { contents: read, security-events: write, actions: read }
-    uses: nabhold/shared/.github/workflows/security-codeql.yml@ba0a60d4d311aa26d9e0b7973b88fcd160cedf4d
+    uses: nabhold/shared/.github/workflows/security-codeql.yml@798a16822f5ea46c826fafc689a64303d32ba3e4
     with: { languages: '["javascript-typescript"]' }
   dependency-audit:
     runs-on: ubuntu-26.04
